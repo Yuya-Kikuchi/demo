@@ -5,12 +5,13 @@ import org.apache.ibatis.annotations.Mapper;
 import com.example.demo.domain.Item;
 
 /**
- * <dd>SQLについての操作を行う
+ * <dd>SQLについての操作を行うMapperクラス
+ * <dl>メソッド名と同じMapperのIDのSQLが実行される。
  * @author yuya
  */
 @Mapper
 public interface ItemMapper {
-	
+
 	/**
 	 * <dd>全商品取得処理
 	 * <dl>全ての商品を取得する
