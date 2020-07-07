@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS item (
   price real,
   vendor varchar(255),
   PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
