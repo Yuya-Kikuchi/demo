@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <title>[[${sysName}]]-新規登録画面</title>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/items">新規登録</a>
+      </div>
+    </div>
+    </nav>
+  <div class="container">
+    <div class="card card-primary mb-3">
+          <div class="card-header">
+            <h5 class="card-title">新規登録</h5>
+          </div>
+        <div class="card-body">
+              <form action="#" th:method="post" th:action="@{/movies/sign_up}" th:object="${signUpForm}">
+              <p th:if="${signupError}"><em>Username or mail address is already used.</em></p>
+                <div class="form-group row">
+                    <label class="col-md-2 control-label">ユーザー名</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="text" id="name" name="name" placeholder="ユーザー名"/>
+<!--                       <em th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Username Error</em></p> -->
+                      <div class="text-danger" id="name-err"></div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 control-label">メールアドレス</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="text" name="email" placeholder="メールアドレス"/>
+<!--                       <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="email"></div> -->
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-2 control-label">パスワード</label>
+                    <div class="col-md-10">
+                      <input class="form-control" type="password" name="passWord" placeholder="パスワード"/>
+<!--                       <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div> -->
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-md-2 col-md-10">
+                      <button class="btn btn-primary" th:onclick="check();">新規</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+	function check() {
+		var sa = document.form.name.value;
+		alert(sa);
+		if (sa == "") {
+			//↓条件に一致する場合(メールアドレスが空の場合)
+			document.getElementById("name-err").textContent = "ユーザー名を入力してください"; //←エラーメッセージを出力
+			return false; //←送信ボタン本来の動作をキャンセルします
+		} else {
+			//↓条件に一致しない場合(メールアドレスが入力されている場合)
+			return true; //←送信ボタン本来の動作を実行します
+		}
+	}
+	/*]]>*/
+</script>
+    <script src="/js/jquery-3.4.1.min"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
